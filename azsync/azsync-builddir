@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl -w
+#!/opt/local/bin/perl -w
 ######################################################################
 # Copyright (c) 2012, Yahoo! Inc. All rights reserved.
 #
@@ -79,7 +79,8 @@ for my $mf (@{$manifest->{computed_manifest}}) {
     next unless -f $first_name;
 
     unlink "$o{d}/$first_name";
-    system $zsyncmake, $first_name, "-o", "$o{d}/$first_name", "-u", $relative_path_to_file;
+#warn qq!$zsyncmake, $first_name, "-o", "$o{d}/$first_name", "-u", $relative_path_to_file!;
+    system $zsyncmake, "-s", $first_name, "-o", "$o{d}/$first_name", "-u", $relative_path_to_file;
     die "can't $zsyncmake $first_name\n" if($?);
     die "didn't $zsyncmake $first_name\n" if ! -f "$o{d}/$first_name";
 }

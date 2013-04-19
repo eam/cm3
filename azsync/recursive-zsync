@@ -1,3 +1,4 @@
+#!/opt/local/bin/perl -w
 ######################################################################
 # Copyright (c) 2012, Yahoo! Inc. All rights reserved.
 #
@@ -7,8 +8,6 @@
 # under which this project is licensed. 
 ######################################################################
 
-
-#!/usr/local/bin/perl -w
 
 use warnings;
 use strict;

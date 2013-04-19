@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl -w
+#!/opt/local/bin/perl -w
 ######################################################################
 # Copyright (c) 2012, Yahoo! Inc. All rights reserved.
 #
@@ -260,6 +260,7 @@ else {
         if ($out) {
             foreach my $cmd2 (@abort) {
                 print "ABORT: [@$cmd2]\n";
+die "fff";
                 system(@$cmd2);
             }
             die "atomic rsync failed: @$cmd exited " . ($out>>8) . "\n";
