@@ -17,7 +17,7 @@ use JSON::PP qw();
 
 our %defaults =
   (
-   get_keys => [ qw/uid gid mode type mtime md5/ ], # order matters
+   get_keys => [ qw/type uid gid mode mtime md5/ ], # order matters, type must come first
    set_keys => [ qw/uid gid mode mtime/ ], # order matters, mtime last
    validate_keys => [ qw/uid gid mode type mtime md5 link / ], # no needed ordering
   );
@@ -170,34 +170,41 @@ sub get_type {
 
 sub get_uid {
     my ($self) = @_;
+    return undef if $self->{data}{type} eq "link"; # no uid for links
     return $self->stat_cache->[4];
 }
 
 sub get_gid {
     my ($self) = @_;
+    return undef if $self->{data}{type} eq "link"; # no gid for links
     return $self->stat_cache->[5];
 }
 
 sub get_size {
     my ($self) = @_;
+    return undef if $self->{data}{type} eq "link"; # no size for links
     return $self->stat_cache->[7]
 }
 
 sub get_atime {
     my ($self) = @_;
+    return undef if $self->{data}{type} eq "link"; # no atime for links
     return $self->stat_cache->[8];
 }
 sub get_mtime {
     my ($self) = @_;
+    return undef if $self->{data}{type} eq "link"; # no mtime for links
     return $self->stat_cache->[9];
 }
 sub get_ctime {
     my ($self) = @_;
+    return undef if $self->{data}{type} eq "link"; # no ctime for links
     return $self->stat_cache->[10];
 }
 
 sub get_mode {
     my ($self) = @_;
+    return undef if $self->{data}{type} eq "link"; # no mode for links
     my $mode = sprintf '%04o', ($self->stat_cache->[2] & 07777);
     return $mode;
 }

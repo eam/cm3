@@ -1,4 +1,4 @@
-#!/opt/local/bin/perl -w
+#!/usr/bin/perl -w
 ######################################################################
 # Copyright (c) 2012, Yahoo! Inc. All rights reserved.
 #
@@ -60,7 +60,7 @@ my $output = $manifest->add_dir(".")->compute_manifest->to_json_lines();
 }
 
 my $zsyncmake =  $o{zsyncmake};
-$zsyncmake ||= "/bin/zsyncmake";
+$zsyncmake ||= "/usr/bin/zsyncmake";
 
 mkdir $o{d} or die "can't mkdir $o{d}: $!";
 # only generate a .zsync for the first name listed in any set of links
